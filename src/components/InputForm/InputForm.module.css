@@ -1,0 +1,28 @@
+
+.inputStyle{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.inputStyle label{
+    font-size: 1.8rem;
+}
+.inputStyle input{
+    padding: 1.5rem;
+    background-color: var(--color-input);
+    color: var(--color-white);
+    width: 100%;
+
+}
+
+.inputStyle input::placeholder{
+    color: rgba(255, 255, 255, 0.489);
+}
+
+
+@media(max-width: 45rem) {
+    .inputStyle input{
+        font-size: 1.5rem;
+        padding: 1.3rem;
+    }
+}
