@@ -2,6 +2,8 @@
     max-width: 150rem;
     width: 90%;
     margin: 0 auto;
+    
+    
 }
 .topSection{
     position: relative;
@@ -116,6 +118,14 @@
     }
 }
 @keyframes imgAnimations {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes pageAnimation {
     0%{
         opacity: 0;
     }

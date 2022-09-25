@@ -1,0 +1,30 @@
+.login{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.login__image{
+    width: 100%;
+    animation-name: opacityAnimation;
+    animation-duration: 1s;
+}
+.login__image img{
+    width: auto;
+}
+@media(max-width: 45rem) {
+    .login{
+        grid-template-columns: 1fr;
+    }
+    .login__image img{
+        width: 0rem;
+    }
+}
+@keyframes opacityAnimation {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
