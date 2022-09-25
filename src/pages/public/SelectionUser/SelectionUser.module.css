@@ -1,0 +1,87 @@
+.importantText{
+    color: var(--color-main);
+    text-align: center;
+}
+.selectionUser{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    animation-name: opacityAnimation;
+    animation-duration: 1s;
+}
+.selectionUser h2{
+    font-size: 4rem;
+}
+.selectionUser__options{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10rem;
+    margin-top: 5rem;
+}
+
+.selectionUser__option{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    gap: 5rem;
+}
+.selectionUser__option img{
+    width: 40rem;
+}
+.selectionUser__option button{
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    border: none;
+    padding: 1.5rem 2rem;
+    background-color: var(--color-back);
+    border: 2px solid var(--color-main);
+    border-radius: 1rem;
+    color: var(--color-white);
+    cursor: pointer;
+    transition: .2s ease;
+}
+.selectionUser__option button:hover{
+    box-shadow: rgba(33, 143, 194, 0.3) 0px 19px 38px, rgba(57, 177, 207, 0.22) 0px 15px 12px;
+    background-color: var(--color-main);   
+}
+
+@media(max-width: 60rem) {
+    .selectionUser h2{
+        font-size: 2.5rem;
+    }
+
+    .selectionUser__option img{
+        width: 25rem;
+    }
+    .selectionUser__option button{
+        width: 90%;
+    }
+}
+@media(max-width: 45rem) {
+    .selectionUser h2{
+        font-size: 2.5rem;
+    }
+    .selectionUser__options{
+        grid-template-columns: 1fr;
+        padding-bottom: 5rem;
+    }
+    .selectionUser__option img{
+        width: 25rem;
+    }
+    .selectionUser__option button{
+        width: 100%;
+        font-size: 1.5rem;
+    }
+}
+@keyframes opacityAnimation {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

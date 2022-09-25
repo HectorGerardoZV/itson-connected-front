@@ -3,6 +3,7 @@
     grid-template-columns: 60% 40%;
     gap: 2rem;
     margin-top: 3rem;
+    position: relative;
 }
 .login__image{
     width: 100%;
@@ -11,6 +12,18 @@
 }
 .login__image img{
     width: auto;
+}
+@media(max-width: 60rem) {
+    .login{
+        grid-template-columns: 1fr;
+    }
+    .login__image{
+        position: absolute;
+        z-index: -1;
+    }
+    .login__image img{
+        width: 100vw;
+    }
 }
 @media(max-width: 45rem) {
     .login{

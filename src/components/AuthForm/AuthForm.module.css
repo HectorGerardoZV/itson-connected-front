@@ -64,6 +64,12 @@
 .submit input:hover{
     box-shadow: rgba(33, 143, 194, 0.3) 0px 19px 38px, rgba(57, 177, 207, 0.22) 0px 15px 12px;
 }
+@media(max-width: 60rem) {
+    .authForm{
+        width: 80%;
+        margin: 0 auto;
+    }
+}
 
 @media(max-width: 45rem) {
     .authForm{
