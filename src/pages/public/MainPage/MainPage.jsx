@@ -1,6 +1,5 @@
-import { Header, Footer } from "../../../components";
+import { Header, Footer, Propose, Step } from "../../../components/Index";
 import IMG_MAIN from "/images/img-mainpage.png";
-import Propose from "../../../components/Propose/Propose";
 
 import style from "./MainPage.module.css";
 const MainPage = () => {
@@ -28,12 +27,32 @@ const MainPage = () => {
 
                 <section className={style.proposes}>
                     <h2 className={style.subTitle}>
-                        <span className={style.importantText}>ITSON-CONNECTED</span> Propositos
+                        <span className={style.importantText}>
+                            ITSON-CONNECTED
+                        </span>{" "}
+                        Propositos
                     </h2>
                     <div className={style.proposes__cards}>
-                        <Propose option={"option1"}/>
-                        <Propose option={"option2"}/>
-                        <Propose option={"option3"}/>
+                        <Propose option={"option1"} />
+                        <Propose option={"option2"} />
+                        <Propose option={"option3"} />
+                    </div>
+                </section>
+
+                <section className={style.steps}>
+                    <h2 className={style.subTitle}>
+                        <span className={style.importantText}>
+                            ITSON-CONNECTED
+                        </span>{" "}
+                        ¿Como funciona?
+                    </h2>
+                    <div className={style.steps__cards}>
+                        <Step step={"1"} />
+                        <div className={style.steps__users}>
+                            <Step step={"21"} />
+                            <Step step={"22"} />
+                        </div>
+                        <Step step={"3"} />
                     </div>
                 </section>
 
