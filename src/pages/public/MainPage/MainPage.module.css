@@ -27,7 +27,6 @@
 .topSection__image img{
     width: 100%;
     height: auto;
-     
 }
 .topSection__title{
     font-size: 5rem;
@@ -38,24 +37,60 @@
 .topSection__slogan span{
     color: var(--color-main);
 }
+.proposes{
+    text-align: center;
+    margin-top: 15rem;
+}
+.proposes__cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5rem;
+    margin-top: 5rem;
+}
+.importantText{
+    color: var(--color-main);
+}
+.subTitle{
+    font-size: 3rem;
+}
 
+@media(max-width: 85rem) {
+    .topSection__title{
+        font-size: 3.5rem;
+    }
+    .topSection__info{
+        margin-top: 1.8rem;
+    }
+    .proposes__cards{
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-content: center;
+    }
+    .subTitle{
+        font-size: 2.8rem;
+    }
+}
 @media(max-width: 45rem) {
+    .subTitle{
+        font-size: 2.5rem;
+    }
     .topSection__info{
         margin-top: 1.5rem;
     }
     .topSection__title{
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
     .topSection__slogan{
         font-size: 1.8rem;
     }
+    .proposes__cards{
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
-
 @keyframes imgAnimations {
     0%{
         opacity: 0;
     }
-
     100%{
         opacity: 1;
     }
