@@ -40,7 +40,10 @@
     background-color: var(--color-main);
     border-radius: 3rem;
 }
-
+.selected {
+    background-color: var(--color-main);
+    border-radius: 3rem;
+}
 @media(max-width: 45rem) {
     .header{
         flex-direction: column;
