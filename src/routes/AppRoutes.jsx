@@ -5,6 +5,7 @@ import {
     SelectionUser,
     SignUp,
     Login,
+    HomeStudent,
 } from "../pages/Index";
 
 import { provider } from "../context/Index";
@@ -26,6 +27,9 @@ const AppRoutes = () => {
                             />
                             <Route path="signup" element={<SignUp />} />
                         </Route>
+                    </Routes>
+                    <Routes>
+                        <Route path="/student" element={<HomeStudent />} />
                     </Routes>
                 </AuthenticationProvider>
             </UserSelectionProvider>
