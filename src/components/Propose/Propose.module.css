@@ -41,4 +41,10 @@
         width: 90%;
         text-align: center;
     }
+    .propose__img{
+        height: 18rem;
+    }
+    .propose__img img{
+        width: 17rem;
+    }
 }
