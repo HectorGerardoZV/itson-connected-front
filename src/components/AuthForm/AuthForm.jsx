@@ -1,9 +1,14 @@
 import IMG_LOGIN_FORM from "/images/img-login-form.svg";
 import { useUserSelection } from "../../hooks/Index";
 import { InputForm } from "../Index";
+import { useAuthentication } from "../../hooks/Index";
+import { useNavigate } from "react-router-dom";
 
 import style from "./AuthForm.module.css";
 const AuthForm = ({ action }) => {
+    let navigate = useNavigate();
+    const { signupInfo, handleOnChangeFormInput, handleCreateAccout } =
+        useAuthentication();
     const { userTypeSelection } = useUserSelection();
     const values = {
         title:
@@ -20,9 +25,26 @@ const AuthForm = ({ action }) => {
         buttonSubmit: action === "login" ? "Iniciar sesión" : "Crear cuenta",
     };
 
+    const handleOnChangeInput = (e) => {
+        const { value, name } = e.target;
+        handleOnChangeFormInput({
+            ...signupInfo,
+            [name.trim().toLowerCase()]: value.trim().toLowerCase(),
+        });
+    };
+    const handleOnSubmit = async (e) => {
+        e.preventDefault();
+        const result = await handleCreateAccout();
+        if (result) {
+            setTimeout(() => {
+                navigate("/auth");
+            }, 1500);
+        }
+    };
+
     return (
         <div>
-            <form className={style.authForm}>
+            <form className={style.authForm} onSubmit={handleOnSubmit}>
                 <fieldset className={style.authForm__fieldset}>
                     <div className={style.authForm__top}>
                         <img src={IMG_LOGIN_FORM} alt="" />
@@ -35,6 +57,8 @@ const AuthForm = ({ action }) => {
                                 placeholder="Tu correo electrónico..."
                                 identifier="email"
                                 type="email"
+                                value={signupInfo.email}
+                                handle={handleOnChangeInput}
                             />
                         ) : null}
                         <InputForm
@@ -42,6 +66,8 @@ const AuthForm = ({ action }) => {
                             placeholder="Tu usuario..."
                             identifier="username"
                             type="text"
+                            value={signupInfo.username}
+                            handle={handleOnChangeInput}
                         />
 
                         {action === "login" ? (
@@ -50,6 +76,8 @@ const AuthForm = ({ action }) => {
                                 placeholder="Tu contraseña..."
                                 identifier="password"
                                 type="password"
+                                value={signupInfo.password}
+                                handle={handleOnChangeInput}
                             />
                         ) : (
                             <div className={style.authForm__inputs__passwords}>
@@ -58,12 +86,16 @@ const AuthForm = ({ action }) => {
                                     placeholder="Tu contraseña..."
                                     identifier="password"
                                     type="password"
+                                    value={signupInfo.password}
+                                    handle={handleOnChangeInput}
                                 />
                                 <InputForm
                                     label="Repetir contraseña"
                                     placeholder="Repite la contraseña..."
                                     identifier="rep_password"
                                     type="password"
+                                    value={signupInfo.rep_password}
+                                    handle={handleOnChangeInput}
                                 />
                             </div>
                         )}

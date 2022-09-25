@@ -1,10 +1,13 @@
 import UserSelectionContext, {UserSelectionProvider} from "./UserSelectionContext";
+import AuthenticationContext, {AuthenticationProvider} from "./AuthenticationContext";
 
 const context={
-    UserSelectionContext
+    UserSelectionContext,
+    AuthenticationContext
 }
 const provider={
-    UserSelectionProvider
+    UserSelectionProvider,
+    AuthenticationProvider
 }
 
 export {

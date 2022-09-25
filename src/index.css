@@ -116,3 +116,18 @@ input{
     background: #05608b;
 }
 
+.toast-success{
+    background-color: var(--color-main);
+    color: var(--color-white);
+    text-align: center;
+    font-weight: bold;
+}
+.toast-error{
+    background-color: var(--color-error);
+    color: var(--color-white);
+    text-align: center;
+    font-weight: bold;
+}
+.toast-success-bar{
+    background-color: var(--color-white);
+}
