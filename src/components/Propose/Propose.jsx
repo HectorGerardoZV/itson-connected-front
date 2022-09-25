@@ -58,6 +58,7 @@ const Propose = ({ option }) => {
             <div className={style.propose__img}>
                 <img src={values[option].img} alt="img-propose" />
             </div>
+            <div className={style.circle}></div>
             <h3>{values[option].title}</h3>
             {values[option].description}
         </div>
