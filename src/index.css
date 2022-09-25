@@ -1,3 +1,93 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;700&display=swap');
+:root{
+    --color-main:#0EA5E9;
+    --color-white:#FFFF;
+    --color-back:#111828;
+    --color-card: #1E293B;
+    --color-input: #334155;
+    --color-error: #E90E12;
+    --color-ok: #0EA5E9;
+    --color-text: #FFFF;
+    --color-black: #0000;
+    --font: 'Merriweather Sans', sans-serif;
+    --size-desktop: 110rem;
+    --size-tablet: 85rem;
+    --size-phone: 48rem;
+}
+html, body{
+    background-color: var(--color-back);   
+    font-family: var(--font);
+    color: var(--color-text);
+}
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body{
+    font-size: 16px;
+    margin:0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+li,
+button,
+input, 
+textarea, 
+header, 
+footer, 
+div, 
+section,
+nav,
+select,
+option,
+span{
+    margin: 0;
+    padding: 0;
+    font-family: var(--font);
+}
+h1{
+    font-size: 4rem;
+}
+h2{
+    font-size: 3rem;
+}
+h3{
+    font-size: 2rem;
+}
+h4{
+    font-size: 1.8rem;
+}
+p,
+a,
+button,
+li,
+input,
+textarea,
+select,
+option{
+    font-size: 1.8rem;
+}
+
+a{
+    text-decoration: none;
+    color: var(--color-text);
+    cursor: pointer;
+}
+button{
+    cursor: pointer;
+}
+
+input{
+    outline: none;
+    border: none;
+    border-radius: 1rem;
+}
