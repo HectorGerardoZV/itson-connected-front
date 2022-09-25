@@ -92,11 +92,28 @@ const AuthenticationProvider = ({ children }) => {
         });
     };
 
-    const handleLogin = async () => {};
+    const handleLogin = async () => {
+        try {
+            const result = await axiosBackend.post(
+                backendEndpoints.auth,
+                signupInfo
+            );
+            if(result.data.token){
+                openToast(
+                    "Verificado",
+                    "top-center",
+                    "toast-success"
+                );
+            }
+            return result.data;
+        } catch (error) {
+            openToast("Credenciales invalidas", "top-center", "toast-error");
+        }
+    };
     const openToast = (message, location, type) => {
         toast.success(message, {
             position: location,
-            autoClose: 3500,
+            autoClose: 2500,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,

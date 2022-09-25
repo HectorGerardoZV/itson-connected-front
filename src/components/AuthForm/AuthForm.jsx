@@ -7,8 +7,12 @@ import { useNavigate } from "react-router-dom";
 import style from "./AuthForm.module.css";
 const AuthForm = ({ action }) => {
     let navigate = useNavigate();
-    const { signupInfo, handleOnChangeFormInput, handleCreateAccout } =
-        useAuthentication();
+    const {
+        signupInfo,
+        handleOnChangeFormInput,
+        handleLogin,
+        handleCreateAccout,
+    } = useAuthentication();
     const { userTypeSelection } = useUserSelection();
     const values = {
         title:
@@ -34,11 +38,22 @@ const AuthForm = ({ action }) => {
     };
     const handleOnSubmit = async (e) => {
         e.preventDefault();
-        const result = await handleCreateAccout();
-        if (result) {
-            setTimeout(() => {
-                navigate("/auth");
-            }, 1500);
+        let result;
+        if (action === "login") {
+            result = await handleLogin();
+            if (result.token) {
+                setTimeout(() => {
+                    navigate("/student");
+                }, 1500);
+            }
+        } else if (action === "signup") {
+            result = await handleCreateAccout();
+
+            if (result) {
+                setTimeout(() => {
+                    navigate("/auth");
+                }, 1500);
+            }
         }
     };
 

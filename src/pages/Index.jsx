@@ -3,11 +3,13 @@ import Login from "./public/Login/Login";
 import SelectionUser from "./public/SelectionUser/SelectionUser";
 import SignUp from "./public/SignUp/SignUp";
 import MasterAuth from "./public/MasterAuth/MasterAuth";
+import HomeStudent from "./student/HomeStudent/HomeStudent";
 
 export { 
     MainPage,
     Login,
     SignUp,
     SelectionUser,
-    MasterAuth
+    MasterAuth,
+    HomeStudent
 };
