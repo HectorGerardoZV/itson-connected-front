@@ -5,7 +5,7 @@ import style from "./MasterAuth.module.css";
 const MasterAuth = () => {
     return (
         <>
-            <section className="">
+            <section className={style.container}>
                 <Header />
                 <Outlet />
             </section>

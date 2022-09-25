@@ -91,3 +91,27 @@ input{
     border: none;
     border-radius: 1rem;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--color-back);
+    border-radius: 1rem;
+    
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--color-main);
+    border-radius: 1rem;
+    transition: .2s ease;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #05608b;
+}
