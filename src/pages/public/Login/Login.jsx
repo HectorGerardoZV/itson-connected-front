@@ -8,7 +8,7 @@ const Login = () => {
             <div className={style.login__image}>
                 <img src={IMG_LOGIN} alt="img-login" />
             </div>
-            <AuthForm />
+            <AuthForm action={"login"}/>
         </div>
     );
 };

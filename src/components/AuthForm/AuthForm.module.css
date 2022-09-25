@@ -5,6 +5,9 @@
     animation-name: opacityAnimation;
     animation-duration: 1s;
 }
+.importantText{
+    color: var(--color-main);
+}
 .authForm__fieldset{
     border: none;
 }
@@ -28,24 +31,7 @@
 .authForm__inputs{
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-}
-.authForm__input{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-.authForm__input label{
-    font-size: 1.8rem;
-}
-.authForm__input input{
-    padding: 1.5rem;
-    background-color: var(--color-input);
-    color: var(--color-white);
-}
-
-.authForm__input input::placeholder{
-    color: rgba(255, 255, 255, 0.489);
+    gap: 2rem;
 }
 
 .submit{
@@ -64,16 +50,26 @@
 .submit input:hover{
     box-shadow: rgba(33, 143, 194, 0.3) 0px 19px 38px, rgba(57, 177, 207, 0.22) 0px 15px 12px;
 }
+.authForm__inputs__passwords{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 3rem;
+}
 @media(max-width: 60rem) {
     .authForm{
-        width: 80%;
+        width: 70%;
         margin: 0 auto;
     }
+    .authForm__inputs__passwords{
+        grid-template-columns: 1fr;
+    }
 }
-
 @media(max-width: 45rem) {
     .authForm{
         padding: 1rem;
+        margin-top: 2rem;
+        width: 95%;
+        margin-bottom: 3rem;
     }
     .authForm__top{
         margin-bottom: 2rem;
@@ -95,6 +91,10 @@
     .submit input{
         width: 100%;
         padding: 1.3rem;
+    }
+    .authForm__inputs__passwords{
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }
 

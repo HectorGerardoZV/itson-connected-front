@@ -1,35 +1,44 @@
-.login{
+.signUp{
     display: grid;
     grid-template-columns: 60% 40%;
     gap: 2rem;
     margin-top: 3rem;
     position: relative;
 }
-.login__image{
+.signUp__image{
     width: 100%;
     animation-name: opacityAnimation;
     animation-duration: 1s;
 }
-.login__image img{
+.signUp__image img{
     width: auto;
 }
+@media(max-width: 80rem) {
+    .signUp{
+        grid-template-columns: 1fr;
+
+    }
+    .signUp__image img{
+        width: 0rem;
+    }
+}
 @media(max-width: 60rem) {
-    .login{
+    .signUp{
         grid-template-columns: 1fr;
     }
-    .login__image{
+    .signUp__image{
         position: absolute;
         z-index: -1;
     }
-    .login__image img{
+    .signUp__image img{
         width: 0rem;
     }
 }
 @media(max-width: 45rem) {
-    .login{
+    .signUp{
         grid-template-columns: 1fr;
     }
-    .login__image img{
+    .signUp__image img{
         width: 0rem;
     }
 }
