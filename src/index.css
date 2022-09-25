@@ -11,6 +11,9 @@
     --color-text: #FFFF;
     --color-black: #0000;
     --font: 'Merriweather Sans', sans-serif;
+    --size-desktop: 110rem;
+    --size-tablet: 85rem;
+    --size-phone: 48rem;
 }
 html, body{
     background-color: var(--color-back);   
@@ -45,7 +48,8 @@ div,
 section,
 nav,
 select,
-option{
+option,
+span{
     margin: 0;
     padding: 0;
     font-family: var(--font);
