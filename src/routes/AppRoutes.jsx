@@ -6,6 +6,7 @@ import {
     SignUp,
     Login,
     HomeStudent,
+    StudentMasterPage
 } from "../pages/Index";
 
 import { provider } from "../context/Index";
@@ -29,7 +30,7 @@ const AppRoutes = () => {
                         </Route>
                     </Routes>
                     <Routes>
-                        <Route path="/student" element={<HomeStudent />} />
+                        <Route path="/student" element={<StudentMasterPage />} />
                     </Routes>
                 </AuthenticationProvider>
             </UserSelectionProvider>
