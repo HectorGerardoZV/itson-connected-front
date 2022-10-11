@@ -1,0 +1,55 @@
+.home__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 10rem;
+}
+
+.home__image img {
+    width: 30rem;
+}
+
+.home__vacancies h2{
+    text-align: center;
+    font-size: 2.5rem;
+}
+.home__vacancies h2 span{
+    color: var(--color-main);
+}
+
+.home__vacancies{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.vacancies__section{
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+}
+
+.home__buttonVacancies{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.home__buttonVacancies{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.home__buttonVacancies button{
+    background-color: var(--color-main);
+    color: var(--color-white);
+    font-size: 1.5rem;
+    width: 20rem;
+    padding: .5rem;
+    border-radius: .5rem;
+}

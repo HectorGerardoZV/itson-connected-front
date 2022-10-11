@@ -30,7 +30,9 @@ const AppRoutes = () => {
                         </Route>
                     </Routes>
                     <Routes>
-                        <Route path="/student" element={<StudentMasterPage />} />
+                        <Route path="/student" element={<StudentMasterPage />} >
+                            <Route index element={<HomeStudent />} />
+                        </Route>
                     </Routes>
                 </AuthenticationProvider>
             </UserSelectionProvider>
