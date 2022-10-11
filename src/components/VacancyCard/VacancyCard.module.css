@@ -1,0 +1,80 @@
+.vacancyCard{
+    background-color: var(--color-card);
+    width: 35rem;
+    margin:  0 auto;
+    border-radius: 2rem;
+}
+
+.vacancyCard__date{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.vacancyCard__info{
+    padding: 2rem;
+}
+.vacancyCard__date p{
+    background-color: var(--color-input);
+    padding: .5rem 2rem;
+    font-size: 1.4rem;
+    border-radius: .5rem;
+    margin-top: -1.2rem;
+}
+
+.vacancyCard__img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.vacancyCard__img img{
+    width: 12rem;
+}
+
+.vacancyCard__title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 1rem;
+}
+.vacancyCard__title p{
+    width: 100%;
+    background-color: var(--color-input);
+    padding: .5rem 2rem;
+    font-size: 1.4rem;
+    border-radius: .5rem;
+}
+
+.vacancyCard__infoVac{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.vacancyCard__infoVac p{
+    font-size: 1.4rem;
+}
+.vacancyCard__infoVac p span{
+    color: var(--color-main);
+}
+
+.vacancyCard__button{
+    width: 100%;
+    padding: .5rem;
+    border: none;
+    background-color:transparent;
+    border-radius: .5rem;
+    font-size: 1.4rem;
+    border: 2px solid var(--color-main);
+    color: var(--color-main);
+    transition: .2s ease;
+}
+
+.vacancyCard__button:hover{
+    background-color: var(--color-main);
+    color: var(--color-white);
+}
