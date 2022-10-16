@@ -1,0 +1,104 @@
+.vacanciesPage{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 3rem;
+}
+.vacancies__filters{
+    display: grid;
+    grid-template-columns: 27% 27% 27% 15%;
+    gap: 1rem;
+}
+
+.calendar__area{
+    position: relative;
+}
+.calendar__picker{
+    position: absolute;
+}
+
+.inputFilter{
+    background-color: var(--color-input);
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    color: var(--color-main);
+}
+.inputFilter::placeholder{
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.calendar__area{
+    background-color: var(--color-input);
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+}
+.filters__calendar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.filters__calendar input{
+    background-color: transparent;
+    color: var(--color-main);
+    
+}
+
+.filters__calendar input::-webkit-inner-spin-button,
+.filters__calendar input::-webkit-calendar-picker-indicator {
+    display: none;
+    appearance: none;
+}
+.filters__calendar img{
+    cursor: pointer;
+}
+
+.button__filter{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button__filter button{
+    border: none;
+    display: flex;
+    align-items: center;
+    width: auto;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    background-color: var(--color-main);
+    gap: 1rem;
+    color: white;
+    transition: .2s ease;
+
+}
+.button__filter button:hover{
+    box-shadow: rgba(33, 143, 194, 0.3) 0px 19px 38px, rgba(57, 177, 207, 0.22) 0px 15px 12px;
+}
+
+.calendar__picker{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 6rem;
+    width: 100%;
+}
+.calendarStyle{
+    border: none;
+    border-radius: 1rem;
+}
+
+.line{
+    height: .7rem;
+    background-color: var(--color-input);
+    margin: 0 auto;
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+    border-radius: 1rem;
+}
+
+.vacancies__area{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 4rem 2rem;
+    margin-bottom: 3rem;
+}

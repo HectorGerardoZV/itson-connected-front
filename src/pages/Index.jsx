@@ -5,6 +5,7 @@ import SignUp from "./public/SignUp/SignUp";
 import MasterAuth from "./public/MasterAuth/MasterAuth";
 import HomeStudent from "./student/HomeStudent/HomeStudent";
 import StudentMasterPage from "./student/StudentMasterPage/StudentMasterPage";
+import VacanciesPage from "./student/VacanciesPage/VacanciesPage";
 
 
 export { 
@@ -14,5 +15,6 @@ export {
     SelectionUser,
     MasterAuth,
     HomeStudent,
-    StudentMasterPage
+    StudentMasterPage,
+    VacanciesPage
 };
