@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 //Components
 import Calendar from "react-calendar";
+import {VacancyCard} from "../../../components/Index";
 
 //Images
 import ICON_CALENDAR from "/icons/icon-calendar.svg";
@@ -60,7 +61,11 @@ const VacanciesPage = () => {
                 />
                 <div className={style.calendar__area}>
                     <div className={style.filters__calendar}>
-                        <input type="date" defaultValue={dateVacancyParsed} />
+                        <input
+                            type="date"
+                            defaultValue={dateVacancyParsed}
+                            disabled={true}
+                        />
                         <img
                             src={ICON_CALENDAR}
                             alt=""
@@ -86,7 +91,18 @@ const VacanciesPage = () => {
             </div>
             <div className={style.line} />
 
-            <section className={style.vacancies__area}></section>
+            <section className={style.vacancies__area}>
+
+              <VacancyCard/>
+              <VacancyCard/>
+              <VacancyCard/>
+              <VacancyCard/>
+              <VacancyCard/>
+              <VacancyCard/>
+              <VacancyCard/>
+              <VacancyCard/>
+              <VacancyCard/>
+            </section>
         </section>
     );
 };

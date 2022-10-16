@@ -91,6 +91,14 @@
     height: .7rem;
     background-color: var(--color-input);
     margin: 0 auto;
-    margin-top: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 5rem;
     border-radius: 1rem;
+}
+
+.vacancies__area{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 4rem 2rem;
+    margin-bottom: 3rem;
 }
