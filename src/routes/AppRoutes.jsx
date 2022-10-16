@@ -6,7 +6,8 @@ import {
     SignUp,
     Login,
     HomeStudent,
-    StudentMasterPage
+    StudentMasterPage,
+    VacanciesPage
 } from "../pages/Index";
 
 import { provider } from "../context/Index";
@@ -32,6 +33,7 @@ const AppRoutes = () => {
                     <Routes>
                         <Route path="/student" element={<StudentMasterPage />} >
                             <Route index element={<HomeStudent />} />
+                            <Route path="vacancies" element={<VacanciesPage />} />
                         </Route>
                     </Routes>
                 </AuthenticationProvider>
