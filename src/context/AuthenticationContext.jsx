@@ -2,34 +2,74 @@ import { createContext, useState } from "react";
 import { axiosBackend, backendEndpoints } from "../config/AxiosHelper";
 import useUserSelection from "../hooks/useUserSelection";
 import { toast } from "react-toastify";
+import { authAPI } from "../api";
 
 const AuthenticationContext = createContext();
-
 const AuthenticationProvider = ({ children }) => {
+
+
     const { userTypeSelection } = useUserSelection();
-    const [signupInfo, setSignupInfo] = useState(
-        localStorage.getItem("signupInfo")
-            ? JSON.parse(localStorage.getItem("signupInfo"))
-            : {
-                  email: "",
-                  username: "",
-                  password: "",
-                  rep_password: "",
-              }
-    );
-    const handleOnChangeFormInput = (value) => {
-        setSignupInfo(value);
+    const [authValues, setAuthValues] = useState({
+        signupInfo: {
+            email: "",
+            username: "",
+            password: "",
+            rep_password: "",
+        }
+    });
+
+    const handleOnChangeFormInput = (e) => {
+        const { value, name } = e.target;
+        setAuthValues({
+            ...authValues,
+            signupInfo: {
+                ...authValues.signupInfo,
+                [name]: value
+            }
+        });
+    };
+    const clearUserInfo = () => {
+        setAuthValues({
+            ...authValues,
+            signupInfo: {
+                email: "",
+                username: "",
+                password: "",
+                rep_password: "",
+            }
+        });
+    };
+
+    //Flows
+    const handleLogin = async () => {
+        try {
+            const token = await axiosBackend.post(
+                backendEndpoints.auth,
+                authValues.signupInfo
+            );
+            if (token) {
+                openToast(
+                    "Verificado",
+                    "top-center",
+                    "toast-success"
+                );
+            }
+            return token;
+        } catch (error) {
+            console.log(error);
+            openToast("Credenciales invalidas", "top-center", "toast-error");
+        }
     };
     const handleCreateAccout = async () => {
         try {
-            if (Object.values(signupInfo).includes("")) {
+            if (Object.values(authValues.signupInfo).includes("")) {
                 openToast(
                     "Todos los campos son requeridos",
                     "top-center",
                     "toast-error"
                 );
             } else {
-                if (signupInfo.password !== signupInfo.rep_password) {
+                if (authValues.signupInfo.password !== authValues.signupInfo.rep_password) {
                     openToast(
                         "Las contraseñas no son iguales",
                         "top-center",
@@ -37,21 +77,13 @@ const AuthenticationProvider = ({ children }) => {
                     );
                 }
             }
-            const idRole = validateRole();
-            const responseRole = await axiosBackend.get(
-                `${backendEndpoints.role}/${idRole}`
+
+            const responseNewUser = await authAPI.fetchCreteUser(
+                authValues.signupInfo,
+                userTypeSelection
             );
-            const roleExist = responseRole.data;
-            if (!roleExist) {
-                openToast("Este role no existe", "top-center", "toast-error");
-            }
-            const newUser = { ...signupInfo, idRole: Number(idRole) };
-            const responseNewUser = await axiosBackend.post(
-                backendEndpoints.users,
-                newUser
-            );
-            const statusNewUser = responseNewUser.status;
-            if (statusNewUser === 200) {
+            console.log(responseNewUser);
+            if (responseNewUser?.status === 200) {
                 openToast(
                     "Geniall!!, cuenta creada exitosamente",
                     "top-center",
@@ -68,6 +100,7 @@ const AuthenticationProvider = ({ children }) => {
                 return false;
             }
         } catch (error) {
+            console.log(error);
             openToast(
                 "No se pudo crear la cuenta",
                 "top-center",
@@ -76,40 +109,9 @@ const AuthenticationProvider = ({ children }) => {
             return false;
         }
     };
-    const validateRole = () => {
-        if (userTypeSelection.trim().toLowerCase() === "student") {
-            return 1;
-        } else if (userTypeSelection.trim().toLowerCase() === "company") {
-            return 5;
-        }
-    };
-    const clearUserInfo = () => {
-        setSignupInfo({
-            email: "",
-            username: "",
-            password: "",
-            rep_password: "",
-        });
-    };
+    
 
-    const handleLogin = async () => {
-        try {
-            const result = await axiosBackend.post(
-                backendEndpoints.auth,
-                signupInfo
-            );
-            if(result.data.token){
-                openToast(
-                    "Verificado",
-                    "top-center",
-                    "toast-success"
-                );
-            }
-            return result.data;
-        } catch (error) {
-            openToast("Credenciales invalidas", "top-center", "toast-error");
-        }
-    };
+   
     const openToast = (message, location, type) => {
         toast.success(message, {
             position: location,
@@ -127,7 +129,7 @@ const AuthenticationProvider = ({ children }) => {
     return (
         <AuthenticationContext.Provider
             value={{
-                signupInfo,
+                ...authValues,
                 handleOnChangeFormInput,
                 handleCreateAccout,
                 handleLogin,

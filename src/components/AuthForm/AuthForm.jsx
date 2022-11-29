@@ -28,20 +28,12 @@ const AuthForm = ({ action }) => {
             ),
         buttonSubmit: action === "login" ? "Iniciar sesión" : "Crear cuenta",
     };
-
-    const handleOnChangeInput = (e) => {
-        const { value, name } = e.target;
-        handleOnChangeFormInput({
-            ...signupInfo,
-            [name.trim().toLowerCase()]: value.trim().toLowerCase(),
-        });
-    };
     const handleOnSubmit = async (e) => {
         e.preventDefault();
-        let result;
+        let token;
         if (action === "login") {
-            result = await handleLogin();
-            if (result.token) {
+            token = await handleLogin();
+            if (token) {
                 setTimeout(() => {
                     navigate("/student");
                 }, 1500);
@@ -73,7 +65,7 @@ const AuthForm = ({ action }) => {
                                 identifier="email"
                                 type="email"
                                 value={signupInfo.email}
-                                handle={handleOnChangeInput}
+                                handle={handleOnChangeFormInput}
                             />
                         ) : null}
                         <InputForm
@@ -82,7 +74,7 @@ const AuthForm = ({ action }) => {
                             identifier="username"
                             type="text"
                             value={signupInfo.username}
-                            handle={handleOnChangeInput}
+                            handle={handleOnChangeFormInput}
                         />
 
                         {action === "login" ? (
@@ -92,7 +84,7 @@ const AuthForm = ({ action }) => {
                                 identifier="password"
                                 type="password"
                                 value={signupInfo.password}
-                                handle={handleOnChangeInput}
+                                handle={handleOnChangeFormInput}
                             />
                         ) : (
                             <div className={style.authForm__inputs__passwords}>
@@ -102,7 +94,7 @@ const AuthForm = ({ action }) => {
                                     identifier="password"
                                     type="password"
                                     value={signupInfo.password}
-                                    handle={handleOnChangeInput}
+                                    handle={handleOnChangeFormInput}
                                 />
                                 <InputForm
                                     label="Repetir contraseña"
@@ -110,7 +102,7 @@ const AuthForm = ({ action }) => {
                                     identifier="rep_password"
                                     type="password"
                                     value={signupInfo.rep_password}
-                                    handle={handleOnChangeInput}
+                                    handle={handleOnChangeFormInput}
                                 />
                             </div>
                         )}
