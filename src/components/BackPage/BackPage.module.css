@@ -1,0 +1,39 @@
+.backPage{
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    text-align: center;
+    padding: 2rem;
+    align-items: center;
+}
+.backPage button{
+    background-color: var(--color-main);
+    padding: 1rem;
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 1rem;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    transition: .2s ease;
+    border: none;
+}
+.backPage button:hover{
+    background-color: var(--color-main);
+    box-shadow: var(--shadow);
+}
+
+.backPage__border{
+    height: 4px;
+    background-color: var(--color-input);
+    border-radius: 1rem;
+}
+
+.title{
+    font-size: 3rem;
+    color: var(--color-main);
+}
+.title span{
+    color: var(--color-text);
+}

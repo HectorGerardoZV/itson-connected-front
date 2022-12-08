@@ -27,7 +27,7 @@ const Propose = ({ option }) => {
                 <p>
                     <span className={style.importantText}>ITSON-CONNECTED</span>{" "}
                     busca darles oportunidades a los{" "}
-                    <span className={style.importantText}>estudiantes</span>
+                    <span className={style.importantText}>estudiantes </span>
                     mediante la aplicación,{" "}
                     <span className={style.importantText}>
                         dando confianza y fidelidad
@@ -43,9 +43,7 @@ const Propose = ({ option }) => {
                 <p>
                     <span className={style.importantText}>ITSON-CONNECTED</span>{" "}
                     busca crear una amistad fuerte entre la
-                    <span className={style.importantText}>
-                        universidad y la empresa
-                    </span>
+                    <span className={style.importantText}> universidad y la empresa</span>
                     , sabemos que en medio de la relación se encuentran los
                     valiosos alumnos y eso queremos preservar.
                 </p>

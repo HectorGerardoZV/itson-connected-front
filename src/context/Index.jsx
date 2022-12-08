@@ -1,13 +1,19 @@
-import UserSelectionContext, {UserSelectionProvider} from "./UserSelectionContext";
-import AuthenticationContext, {AuthenticationProvider} from "./AuthenticationContext";
+import UserSelectionContext, { UserSelectionProvider } from "./UserSelectionContext";
+import AuthenticationContext, { AuthenticationProvider } from "./AuthenticationContext";
+import VacanciesContext, { VacanciesProvider } from "./VacanciesContext";
+import MajorsContext, { MajorsProvider } from "./MajorsContext";
 
-const context={
+const context = {
     UserSelectionContext,
-    AuthenticationContext
+    AuthenticationContext,
+    VacanciesContext,
+    MajorsContext,
 }
-const provider={
+const provider = {
     UserSelectionProvider,
-    AuthenticationProvider
+    AuthenticationProvider,
+    VacanciesProvider,
+    MajorsProvider,
 }
 
 export {

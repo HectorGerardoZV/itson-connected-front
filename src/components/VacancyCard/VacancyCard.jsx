@@ -1,16 +1,26 @@
-
+import { useNavigate } from "react-router-dom";
+//Hooks
+import { useVacancies } from "../../hooks";
+//Helpers
+import { dateHelpers } from "../../helpers/";
 //Icons
 import IBM_IMG from "./ibm-img.png";
 
 //Style
 import style from "./VacancyCard.module.css";
-const VacancyCard = (props) => {
+const VacancyCard = ({ vacancy, vacancyURL }) => {
+  let navigate = useNavigate();
+  const { hadleSelectAccount } = useVacancies();
 
-  const { date, image, title, vacancies, company } = props;
+  const { _id, created, limit, name, company } = vacancy;
+  const handleOnClickVacancy = () => {
+    hadleSelectAccount(vacancy);
+    navigate(`${vacancyURL}/${_id}`);
+  }
   return (
     <div className={style.vacancyCard}>
       <div className={style.vacancyCard__date}>
-        <p>11/01/2022</p>
+        <p>{dateHelpers.formateDate(created)}</p>
       </div>
       <div className={style.vacancyCard__info}>
         <div className={style.vacancyCard__img}>
@@ -18,15 +28,19 @@ const VacancyCard = (props) => {
         </div>
 
         <div className={style.vacancyCard__title}>
-          <p>Desarrollador de software</p>
+          <p>{name}</p>
         </div>
 
         <div className={style.vacancyCard__infoVac}>
-          <p><span>Empresa</span> - IBM</p>
-          <p><span>Vacancies</span> - 10</p>
+          <p><span>Empresa</span> - {company?.username}</p>
+          <p><span>Limite</span> - {limit}</p>
         </div>
 
-        <button className={style.vacancyCard__button}>Ver vacante</button>
+        <button className={style.vacancyCard__button}
+          onClick={handleOnClickVacancy}
+        >
+          Ver vacante
+        </button>
       </div>
     </div>
   )

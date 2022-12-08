@@ -14,6 +14,7 @@
     --size-desktop: 110rem;
     --size-tablet: 85rem;
     --size-phone: 48rem;
+    --shadow: rgba(33, 143, 194, 0.3) 0px 19px 38px, rgba(57, 177, 207, 0.22) 0px 15px 12px;
 }
 html, body{
     background-color: var(--color-back);   
@@ -131,3 +132,4 @@ input{
 .toast-success-bar{
     background-color: var(--color-white);
 }
+

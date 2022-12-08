@@ -5,13 +5,21 @@ const ROLE1_ID = import.meta.env.VITE_ROLE1_ID;
 const ROLE2_ID = import.meta.env.VITE_ROLE2_ID;
 const fetchLogin = async (credentials) => {
     try {
-        const {data:token} = await axiosBackend.post(backendEndpoints.auth,credentials);
-        return token;
+        const {data} = await axiosBackend.post(backendEndpoints.auth,credentials);
+        return data;
     } catch (error) {
 
     }
 }
-
+const fetchLoginCheck = async(headers)=>{
+    const url = `${backendEndpoints.auth}/checkRole`;
+    try {
+       const {data} = await axiosBackend.get(url,headers);
+       return data;
+    } catch (error) {
+        return error;
+    }
+}
 const fetchCreteUser = async (credentials, role) => {
     const fetchOptions = {
         [ROLE1_NAME]: fetchCreateStudentUser,
@@ -19,7 +27,6 @@ const fetchCreteUser = async (credentials, role) => {
     }
     return await fetchOptions[role](credentials);
 }
-
 const fetchCreateStudentUser = async (credentials) => {
     try {
         credentials.role = ROLE1_ID;
@@ -29,7 +36,6 @@ const fetchCreateStudentUser = async (credentials) => {
 
     }
 }
-
 const fetchCreateCompanyUser = async (credentials) => {
     try {
         credentials.role = ROLE2_ID;
@@ -44,5 +50,6 @@ export {
     fetchLogin,
     fetchCreteUser,
     fetchCreateStudentUser,
-    fetchCreateCompanyUser
+    fetchCreateCompanyUser,
+    fetchLoginCheck
 }

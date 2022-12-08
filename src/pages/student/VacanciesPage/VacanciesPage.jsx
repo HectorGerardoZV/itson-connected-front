@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 
 //Components
 import Calendar from "react-calendar";
-import {VacancyCard} from "../../../components/Index";
+import { VacancyCard } from "../../../components/Index";
+
+//Hooks
+import { useVacancies } from "../../../hooks";
 
 //Images
 import ICON_CALENDAR from "/icons/icon-calendar.svg";
@@ -12,6 +15,7 @@ import ICON_SEARCH from "/icons/icon-search.svg";
 import "react-calendar/dist/Calendar.css";
 import style from "./VacanciesPage.module.css";
 const VacanciesPage = () => {
+    const { loadVacanciesPage, vacanciesManipulate } = useVacancies();
     const [dateVacancy, setDateVacancy] = useState(new Date());
     const [dateVacancyParsed, setDateVacancyParsed] = useState("");
     const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
@@ -42,6 +46,9 @@ const VacanciesPage = () => {
         );
     };
 
+    useEffect(() => {
+        loadVacanciesPage();
+    }, [])
     useEffect(() => {
         parseDatePickerResult();
     }, [dateVacancy]);
@@ -93,15 +100,15 @@ const VacanciesPage = () => {
 
             <section className={style.vacancies__area}>
 
-              <VacancyCard/>
-              <VacancyCard/>
-              <VacancyCard/>
-              <VacancyCard/>
-              <VacancyCard/>
-              <VacancyCard/>
-              <VacancyCard/>
-              <VacancyCard/>
-              <VacancyCard/>
+                {
+                    vacanciesManipulate.map((vacancy, index)=>(
+                        <VacancyCard 
+                            key={index}
+                            vacancy={vacancy}
+                            vacancyURL={"/student/vacancies"}
+                        />
+                    ))
+                }
             </section>
         </section>
     );

@@ -17,7 +17,7 @@ const MainPage = () => {
                             Conéctate a la <span>bolsa de trabajo</span>
                             <br />
                             exclusiva para los
-                            <span>estudiantes</span> de ITSON
+                            <span> estudiantes</span> de ITSON
                         </h2>
                     </div>
                     <div className={style.topSection__image}>

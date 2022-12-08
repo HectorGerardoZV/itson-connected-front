@@ -2,6 +2,8 @@
     width: 90%;
     margin: 0 auto;
     margin-top: 3rem;
+    animation-name: opacityAnimation;
+    animation-duration: .7s;
 }
 .vacancies__filters{
     display: grid;
@@ -101,4 +103,15 @@
     grid-template-columns: repeat(3,1fr);
     gap: 4rem 2rem;
     margin-bottom: 3rem;
+}
+
+
+
+@keyframes opacityAnimation {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }

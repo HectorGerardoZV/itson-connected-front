@@ -17,7 +17,7 @@ const Step = ({ step }) => {
             step: 2,
             img: IMG_STEP_21,
             description:
-                "Como estudiante, busca vacantes de empleo relacionadas con tu carrera universitario.",
+                "Como estudiante, busca vacantes de empleo relacionadas con tu carrera universitaria.",
         },
         step22: {
             step: 2,

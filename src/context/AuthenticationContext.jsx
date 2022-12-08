@@ -6,8 +6,6 @@ import { authAPI } from "../api";
 
 const AuthenticationContext = createContext();
 const AuthenticationProvider = ({ children }) => {
-
-
     const { userTypeSelection } = useUserSelection();
     const [authValues, setAuthValues] = useState({
         signupInfo: {
@@ -15,9 +13,9 @@ const AuthenticationProvider = ({ children }) => {
             username: "",
             password: "",
             rep_password: "",
-        }
+        },
+        user: localStorage.getItem("userLoged") ? JSON.parse(localStorage.getItem("userLoged")) : null
     });
-
     const handleOnChangeFormInput = (e) => {
         const { value, name } = e.target;
         setAuthValues({
@@ -39,14 +37,13 @@ const AuthenticationProvider = ({ children }) => {
             }
         });
     };
-
     //Flows
     const handleLogin = async () => {
         try {
-            const token = await axiosBackend.post(
-                backendEndpoints.auth,
-                authValues.signupInfo
-            );
+            const response = await authAPI.fetchLogin(authValues.signupInfo);
+            const { token, user } = response;
+            localStorage.setItem("userLoged", JSON.stringify(user));
+            setAuthValues({ ...authValues, user });
             if (token) {
                 openToast(
                     "Verificado",
@@ -54,9 +51,9 @@ const AuthenticationProvider = ({ children }) => {
                     "toast-success"
                 );
             }
-            return token;
+            const roleToken = await authAPI.fetchLoginCheck({ headers: { Authorization: `Bearer ${token}` } });
+            return roleToken.role;
         } catch (error) {
-            console.log(error);
             openToast("Credenciales invalidas", "top-center", "toast-error");
         }
     };
@@ -109,9 +106,6 @@ const AuthenticationProvider = ({ children }) => {
             return false;
         }
     };
-    
-
-   
     const openToast = (message, location, type) => {
         toast.success(message, {
             position: location,

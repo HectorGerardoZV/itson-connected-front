@@ -6,6 +6,9 @@ import Step from "./Step/Step";
 import AuthForm from "./AuthForm/AuthForm";
 import InputForm from "./InputForm/InputForm";
 import VacancyCard from "./VacancyCard/VacancyCard";
+import BackPage from "./BackPage/BackPage";
+import HeaderAppAdmin from "./HeaderAppAdmin/HeaderAppAdmin";
+import ProfileStudent from "./ProfileStudent/ProfileStudent";
 
 //Private
 import HeaderApp from "./HeaderApp/HeaderApp";
@@ -18,5 +21,8 @@ export {
     AuthForm,
     InputForm,
     HeaderApp,
-    VacancyCard
+    VacancyCard,
+    BackPage,
+    HeaderAppAdmin,
+    ProfileStudent
 }

@@ -30,12 +30,16 @@ const AuthForm = ({ action }) => {
     };
     const handleOnSubmit = async (e) => {
         e.preventDefault();
-        let token;
+        let role;
         if (action === "login") {
-            token = await handleLogin();
-            if (token) {
+            role = await handleLogin();
+            if (role) {
                 setTimeout(() => {
-                    navigate("/student");
+                    if (role === "company") {
+                        navigate("/company");
+                    } else if (role === "student") {
+                        navigate("/student");
+                    }
                 }, 1500);
             }
         } else if (action === "signup") {

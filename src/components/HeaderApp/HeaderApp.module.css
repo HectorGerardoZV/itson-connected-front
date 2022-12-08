@@ -6,11 +6,11 @@
     margin-top: 3rem;
 }
 
-.header__logo img{
+.header__logo img {
     width: 17rem;
 }
 
-.header__navegation{
+.header__navegation {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -20,7 +20,8 @@
     height: .7rem;
 
 }
-.header__navegation a{
+
+.header__navegation a {
     font-size: 1.5rem;
     padding: .3rem 0rem;
     background-color: var(--color-card);
@@ -29,29 +30,76 @@
     border-radius: 2rem;
     transition: .2s ease;
 }
-.header__navegation a:hover{
+
+.header__navegation a:hover {
     background-color: var(--color-main);
 }
 
-.header__userArea{
+.header__userArea {
     display: flex;
     justify-content: flex-end;
 }
 
-.header__userIcon{
+.header__userIcon {
     padding: 1.5rem 3rem;
     background-color: var(--color-card);
     border-radius: 1rem;
     position: relative;
     cursor: pointer;
 }
-.userIcon{
+
+.userIcon {
     width: 4rem;
 }
-.userIcon__connected{
+
+.userIcon__connected {
     position: absolute;
     top: 0;
     right: 0;
     margin-top: -.6rem;
     margin-right: -.6rem;
 }
+
+.selected a {
+    background-color: var(--color-main);
+}
+
+.header__userArea {
+    position: relative;
+}
+
+.header__userMenu {
+    position: absolute;
+    background-color: var(--color-input);
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    gap: 2rem;
+    margin-bottom: -10rem;
+    width: 10rem;
+    padding: 1rem;
+    font-size: 1.4rem;
+    border-radius: 1rem;
+    animation-name: menuAnimation;
+    animation-duration: .2s;
+}
+
+.header__userMenu a {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+@keyframes menuAnimation {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
