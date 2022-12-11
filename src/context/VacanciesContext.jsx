@@ -1,10 +1,10 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import { vacanciesAPI } from "../api";
-import { axiosBackend } from "../config/AxiosHelper";
-import AuthenticationContext from "./AuthenticationContext";
+import ProfileContext from "./ProfileContext";
+import { toast } from "react-toastify";
 const VacanciesContext = createContext();
 const VacanciesProvider = ({ children }) => {
-    const { user } = useContext(AuthenticationContext);
+    const { profile } = useContext(ProfileContext);
     const [vacanciesValues, setVacanciesValues] = useState({
         vacancies: [],
         vacanciesManipulate: [],
@@ -18,7 +18,7 @@ const VacanciesProvider = ({ children }) => {
         vacancyInfo: {
             name: "",
             major: "",
-            company: user,
+            company: "",
             generalData: "",
             activities: "",
             offer: "",
@@ -36,7 +36,7 @@ const VacanciesProvider = ({ children }) => {
                 vacanciesManipulate: vacancies,
             });
         } catch (error) {
-
+            console.log(error);
         }
     }
     const hadleSelectAccount = (vacancy) => {
@@ -45,7 +45,7 @@ const VacanciesProvider = ({ children }) => {
     }
     const handleMyVacancies = async () => {
         try {
-            const vacancies = await vacanciesAPI.fetchMyVacancies(user);
+            const vacancies = await vacanciesAPI.fetchMyVacancies(profile._id);
             setVacanciesValues({
                 ...vacanciesValues,
                 vacancies: vacancies,
@@ -67,33 +67,53 @@ const VacanciesProvider = ({ children }) => {
     }
     const createAccount = async () => {
         try {
+            const vacancy = { ...vacanciesValues.vacancyInfo };
+            vacancy.company = profile._id;
+            const result = await vacanciesAPI.fetchCreateVacancy(vacancy);
+            setVacanciesValues({
+                ...vacanciesValues,
+                vacancyInfo: {
+                    name: "",
+                    major: "",
+                    company:"",
+                    generalData: "",
+                    activities: "",
+                    offer: "",
+                    requirements: "",
+                    limit: "",
+                }
+            });
+            await handleMyVacancies();
+            openToast("Vacante creada!!, dale un vistado en tus vacantes.", "top-right", "toast-success");
+            return true;
 
-            const result = await vacanciesAPI.fetchCreateVacancy(vacanciesValues.vacancyInfo);
-            if (result) {
-                setVacanciesValues({
-                    ...vacanciesValues,
-                    vacancyInfo: {
-                        name: "",
-                        major: "638a17d8996987d587cf7823",
-                        company: user,
-                        generalData: "",
-                        activities: "",
-                        offer: "",
-                        requirements: "",
-                        limit: "",
-                    }
-                });
-                await loadVacanciesPage();
-                return true;
-            } else {
-                return false;
-            }
         } catch (error) {
+            openToast("No se pudo agregar la vacante, intentalo de nuevo.", "top-right", "toast-error");
             return false;
         }
     }
 
 
+    const openToast = (message, location, type) => {
+        toast.success(message, {
+            position: location,
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            className: type,
+            progressClassName: "toast-success-bar",
+            icon: false,
+        });
+    };
+
+
+
+    useEffect(() => {
+        handleMyVacancies();
+    }, [profile]);
     return (
         <VacanciesContext.Provider
             value={{

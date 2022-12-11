@@ -10,7 +10,7 @@ const HeaderAppAdmin = () => {
             </div>
             <div className={style.header__navegation}>
                 <Link to={"/company/myVacancies"}>Mis vacantes</Link>
-                <Link to={"/company/MyAccount"}>Mi cuenta</Link>
+                <Link to={"/company/myProfile"}>Mi cuenta</Link>
                 <Link to={"/"}>Cerrar sesion</Link>
             </div>
             <div className={style.header__userArea}></div>

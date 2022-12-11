@@ -9,6 +9,7 @@ import VacancyCard from "./VacancyCard/VacancyCard";
 import BackPage from "./BackPage/BackPage";
 import HeaderAppAdmin from "./HeaderAppAdmin/HeaderAppAdmin";
 import ProfileStudent from "./ProfileStudent/ProfileStudent";
+import ProfileCompany from "./ProfileCompany/ProfileCompany";
 
 //Private
 import HeaderApp from "./HeaderApp/HeaderApp";
@@ -24,5 +25,6 @@ export {
     VacancyCard,
     BackPage,
     HeaderAppAdmin,
-    ProfileStudent
+    ProfileStudent,
+    ProfileCompany
 }

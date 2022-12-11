@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useVacancies, useMajors } from "../../../hooks";
+import { useVacancies, useMajors, useProfiles } from "../../../hooks";
 import { dateHelpers } from "../../../helpers";
 import ICON_COMPANY from "./ibm-img.png";
 import { BackPage } from "../../../components";
@@ -8,12 +8,15 @@ const CompanyAddVacancyPage = () => {
     let navigate = useNavigate();
     const { handleOnChangeVacancy, createAccount, vacancyInfo } = useVacancies();
     const { majors } = useMajors();
+    const { profile } = useProfiles();
 
     const handleOnCreate = async () => {
         const result = await createAccount();
-        if (result) {
-            navigate("/company");
-        }
+        setTimeout(() => {
+            if (result) {
+                navigate("/company");
+            }
+        }, 2000);
     }
     return (
         <section className={style.page}>
@@ -23,7 +26,7 @@ const CompanyAddVacancyPage = () => {
             />
             <section className={style.vacancyInfo}>
                 <div className={style.vacancyInfo__image}>
-                    <img src={ICON_COMPANY} />
+                    <img src={profile ? profile.image : ICON_COMPANY} />
                 </div>
                 <h3>{dateHelpers.formateDate(new Date())}</h3>
 

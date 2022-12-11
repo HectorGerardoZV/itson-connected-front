@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import { axiosBackend, backendEndpoints } from "../config/AxiosHelper";
 import useUserSelection from "../hooks/useUserSelection";
 import { toast } from "react-toastify";
 import { authAPI } from "../api";

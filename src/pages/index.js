@@ -12,6 +12,7 @@ import CompanyMyVacanciesPage from "./company/companyMyVacanciesPage/CompanyMyVa
 import CompanyVacancyPage from "./company/companyVacancyPage/CompanyVacancyPage";
 import CompanyAddVacancyPage from "./company/companyAddVacancyPage/CompanyAddVacancyPage";
 import StudentProfilePage from "./student/StudentProfilePage/StudentProfilePage";
+import CompanyProfilePage from "./company/companyProfilePage/CompanyProfilePage";
 
 export { 
     MainPage,
@@ -27,5 +28,6 @@ export {
     CompanyMyVacanciesPage,
     CompanyVacancyPage,
     CompanyAddVacancyPage,
-    StudentProfilePage
+    StudentProfilePage,
+    CompanyProfilePage
 };

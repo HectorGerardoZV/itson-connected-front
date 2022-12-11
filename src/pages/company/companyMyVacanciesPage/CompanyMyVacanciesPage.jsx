@@ -10,7 +10,7 @@ import ADD_BUTTON from "/icons/icon-add-new.svg"
 import style from "./CompanyMyVacanciesPage.module.css";
 const CompanyMyVacanciesPage = () => {
     let navigate = useNavigate();
-    const { handleMyVacancies, vacanciesManipulate } = useVacancies();
+    const { handleMyVacancies, vacanciesManipulate} = useVacancies();
 
     const handleOnClick = ()=>{
         navigate("/company/myVacancies/add");
