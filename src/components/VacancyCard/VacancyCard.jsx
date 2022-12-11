@@ -13,6 +13,7 @@ const VacancyCard = ({ vacancy, vacancyURL }) => {
   const { hadleSelectAccount } = useVacancies();
 
   const { _id, created, limit, name, company } = vacancy;
+  const {image, name:companyName} = company;
   const handleOnClickVacancy = () => {
     hadleSelectAccount(vacancy);
     navigate(`${vacancyURL}/${_id}`);
@@ -24,7 +25,7 @@ const VacancyCard = ({ vacancy, vacancyURL }) => {
       </div>
       <div className={style.vacancyCard__info}>
         <div className={style.vacancyCard__img}>
-          <img src={IBM_IMG} alt="" />
+          <img src={image} alt="" />
         </div>
 
         <div className={style.vacancyCard__title}>
@@ -32,7 +33,7 @@ const VacancyCard = ({ vacancy, vacancyURL }) => {
         </div>
 
         <div className={style.vacancyCard__infoVac}>
-          <p><span>Empresa</span> - {company?.username}</p>
+          <p><span>Empresa</span> - {companyName}</p>
           <p><span>Limite</span> - {limit}</p>
         </div>
 

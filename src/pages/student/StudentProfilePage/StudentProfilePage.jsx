@@ -4,7 +4,8 @@ import { ProfileStudent } from "../../../components";
 import style from "./StudentProfilePage.module.css";
 const StudentProfilePage = () => {
     return (
-        <div className="">
+        <div className={style.formProfile}>
+            <h1><span>Mi</span> perfil</h1>
             <ProfileStudent />
         </div>
     )

@@ -21,14 +21,10 @@ const fetchMyVacancies = async (companyId) => {
     }
 }
 
-const fetchCreateVacancy = async(vacancy)=>{
+const fetchCreateVacancy = async (vacancy) => {
     const url = `${vacanciesEndpoint}`
-    try {
-        const {data} = await axiosBackend.post(url,vacancy);
-        return data;
-    } catch (error) {
-        return error;        
-    }
+    const { data } = await axiosBackend.post(url, vacancy);
+    return data;
 }
 
 export {

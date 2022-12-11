@@ -2,13 +2,14 @@ import ICON_COMPANY from "./ibm-img.png";
 //Components
 import { BackPage } from "../../../components";
 //Hooks
-import { useVacancies } from "../../../hooks";
+import { useVacancies, useProfiles } from "../../../hooks";
 //Helpers
 import { dateHelpers } from "../../../helpers";
 //Style
 import style from "./CompanyVacancyPage.module.css";
 const CompanyVacancyPage = () => {
     const { vacancy } = useVacancies();
+    const {profile} = useProfiles();
     return (
         <section className={style.page}>
             <BackPage
@@ -17,7 +18,7 @@ const CompanyVacancyPage = () => {
             />
             <section className={style.vacancyInfo}>
                 <div className={style.vacancyInfo__image}>
-                    <img src={ICON_COMPANY} />
+                    <img src={profile.image} />
                 </div>
                 <h3>{dateHelpers.formateDate(vacancy.created)}</h3>
                 <section className={style.vacancyInfo__section}>
