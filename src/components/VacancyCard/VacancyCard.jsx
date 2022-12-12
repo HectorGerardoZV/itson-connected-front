@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useVacancies } from "../../hooks";
 //Helpers
 import { dateHelpers } from "../../helpers/";
-//Icons
-import IBM_IMG from "./ibm-img.png";
 
 //Style
 import style from "./VacancyCard.module.css";

@@ -2,9 +2,12 @@ import { createContext, useState, useContext, useEffect } from "react";
 import { vacanciesAPI } from "../api";
 import ProfileContext from "./ProfileContext";
 import { toast } from "react-toastify";
+import UserVacancyContext from './UserVacancyContext';
+
 const VacanciesContext = createContext();
 const VacanciesProvider = ({ children }) => {
     const { profile } = useContext(ProfileContext);
+    const { addAplicationUser } = useContext(UserVacancyContext);
     const [vacanciesValues, setVacanciesValues] = useState({
         vacancies: [],
         vacanciesManipulate: [],
@@ -24,7 +27,8 @@ const VacanciesProvider = ({ children }) => {
             offer: "",
             requirements: "",
             limit: "",
-        }
+        },
+        userProfileSelected: null
     });
 
     const loadVacanciesPage = async () => {
@@ -39,9 +43,10 @@ const VacanciesProvider = ({ children }) => {
             console.log(error);
         }
     }
-    const hadleSelectAccount = (vacancy) => {
-        localStorage.setItem("vacancySelected", JSON.stringify(vacancy));
-        setVacanciesValues({ ...vacanciesValues, vacancy });
+    const hadleSelectAccount = async (vacancy) => {
+        const vacancyFound = await vacanciesAPI.fetchVacancyById(vacancy._id);
+        localStorage.setItem("vacancySelected", JSON.stringify(vacancyFound));
+        setVacanciesValues({ ...vacanciesValues, vacancy: vacancyFound });
     }
     const handleMyVacancies = async () => {
         try {
@@ -52,7 +57,11 @@ const VacanciesProvider = ({ children }) => {
                 vacanciesManipulate: vacancies
             });
         } catch (error) {
-
+            setVacanciesValues({
+                ...vacanciesValues,
+                vacancies: [],
+                vacanciesManipulate: []
+            });
         }
     }
     const handleOnChangeVacancy = (e) => {
@@ -69,13 +78,13 @@ const VacanciesProvider = ({ children }) => {
         try {
             const vacancy = { ...vacanciesValues.vacancyInfo };
             vacancy.company = profile._id;
-            const result = await vacanciesAPI.fetchCreateVacancy(vacancy);
+            await vacanciesAPI.fetchCreateVacancy(vacancy);
             setVacanciesValues({
                 ...vacanciesValues,
                 vacancyInfo: {
                     name: "",
                     major: "",
-                    company:"",
+                    company: "",
                     generalData: "",
                     activities: "",
                     offer: "",
@@ -92,7 +101,26 @@ const VacanciesProvider = ({ children }) => {
             return false;
         }
     }
+    const addUserAplication = async () => {
+        const profileId = profile._id;
+        const vacancyId = vacanciesValues.vacancy.vacancy._id;
+        await addAplicationUser(profileId, vacancyId);
+    }
+    const handleGetVacancyById = async () => {
+        try {
+            const vacancy = await vacanciesAPI.fetchVacancyById(vacanciesValues.vacancy._id);
+            localStorage.setItem("vacancySelected", JSON.stringify(vacancy));
+            setVacanciesValues({ ...vacanciesValues, vacancy });
+        } catch (error) {
 
+        }
+    }
+    const handleSelectUserProfile  = (profile)=>{
+        setVacanciesValues({
+            ...vacanciesValues,
+            userProfileSelected:profile
+        });
+    }
 
     const openToast = (message, location, type) => {
         toast.success(message, {
@@ -122,7 +150,10 @@ const VacanciesProvider = ({ children }) => {
                 hadleSelectAccount,
                 handleMyVacancies,
                 handleOnChangeVacancy,
-                createAccount
+                createAccount,
+                addUserAplication,
+                handleGetVacancyById,
+                handleSelectUserProfile
             }}
         >
             {children}

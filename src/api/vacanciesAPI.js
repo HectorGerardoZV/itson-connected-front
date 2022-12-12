@@ -11,6 +11,11 @@ const fetchVacancies = async (status) => {
     }
 }
 
+const fetchVacancyById = async(id)=>{
+    const {data} = await axiosBackend.get(`${backendEndpoints.vacancies}/${id}`);
+    return data;
+}
+
 const fetchMyVacancies = async (companyId) => {
     const url = `${vacanciesEndpoint}/company/${companyId}`
     try {
@@ -30,5 +35,6 @@ const fetchCreateVacancy = async (vacancy) => {
 export {
     fetchVacancies,
     fetchMyVacancies,
-    fetchCreateVacancy
+    fetchCreateVacancy,
+    fetchVacancyById
 }

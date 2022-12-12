@@ -43,7 +43,6 @@ const HeaderApp = () => {
                     isMenuOpen ? (
                         <div className={style.header__userMenu}>
                             <Link to={"/student/myProfile"}>Mi perfil</Link>
-                            <Link to={"/student/MyVacancies"}>Mis vacantes</Link>
                             <Link to={"/"}>Salir</Link>
                         </div>
                     ) : null

@@ -1,6 +1,5 @@
-import ICON_COMPANY from "./ibm-img.png";
 //Components
-import { BackPage } from "../../../components";
+import { BackPage, ProfileStundetCard } from "../../../components";
 //Hooks
 import { useVacancies, useProfiles } from "../../../hooks";
 //Helpers
@@ -8,8 +7,9 @@ import { dateHelpers } from "../../../helpers";
 //Style
 import style from "./CompanyVacancyPage.module.css";
 const CompanyVacancyPage = () => {
-    const { vacancy } = useVacancies();
-    const {profile} = useProfiles();
+    const { vacancy: vacancyFound } = useVacancies();
+    const { vacancy, postulations } = vacancyFound;
+    const { profile } = useProfiles();
     return (
         <section className={style.page}>
             <BackPage
@@ -18,7 +18,7 @@ const CompanyVacancyPage = () => {
             />
             <section className={style.vacancyInfo}>
                 <div className={style.vacancyInfo__image}>
-                    <img src={profile.image} />
+                    <img src={profile?.image} />
                 </div>
                 <h3>{dateHelpers.formateDate(vacancy.created)}</h3>
                 <section className={style.vacancyInfo__section}>
@@ -62,10 +62,24 @@ const CompanyVacancyPage = () => {
                                 </textarea>
                             </div>
                         </div>
-                       
+
                     </div>
                 </section>
             </section>
+
+            <section className={style.postulations__section}>
+                <div className={style.line}></div>
+                <h2 className={style.titleSection}> <span>Usuarios</span> postulados</h2>
+                <div className={style.postulations}>
+                    {
+                        postulations?.profiles.map((profile, index) => (
+                            <ProfileStundetCard
+                                key={index}
+                                profile={profile}
+                            />
+                        ))
+                    }
+                </div></section>
         </section>
     )
 }
