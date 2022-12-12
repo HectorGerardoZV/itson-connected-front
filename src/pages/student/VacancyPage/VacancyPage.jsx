@@ -10,7 +10,8 @@ import ICON_COMPANY from "./ibm-img.png";
 //Style
 import style from "./VacancyPage.module.css";
 const VacancyPage = () => {
-    const { vacancy } = useVacancies();
+    const { vacancy: vacancyFound, addUserAplication } = useVacancies();
+    const { vacancy } = vacancyFound
     return (
         <section className={style.page}>
             <BackPage
@@ -19,7 +20,7 @@ const VacancyPage = () => {
             />
             <section className={style.vacancyInfo}>
                 <div className={style.vacancyInfo__image}>
-                    <img src={ICON_COMPANY} />
+                    <img src={vacancy.company.image} />
                 </div>
                 <h3>{dateHelpers.formateDate(vacancy.created)}</h3>
                 <p className={style.vacancyTitle}>{vacancy.name}</p>
@@ -63,7 +64,7 @@ const VacancyPage = () => {
                             </div>
                         </div>
                         <div className={style.apply}>
-                            <button>Postularme</button>
+                            <button onClick={addUserAplication}>Postularme</button>
                         </div>
                     </div>
                 </section>

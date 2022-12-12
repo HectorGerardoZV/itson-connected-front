@@ -10,6 +10,7 @@ import BackPage from "./BackPage/BackPage";
 import HeaderAppAdmin from "./HeaderAppAdmin/HeaderAppAdmin";
 import ProfileStudent from "./ProfileStudent/ProfileStudent";
 import ProfileCompany from "./ProfileCompany/ProfileCompany";
+import ProfileStundetCard from "./ProfileStundetCard/ProfileStundetCard";
 
 //Private
 import HeaderApp from "./HeaderApp/HeaderApp";
@@ -26,5 +27,6 @@ export {
     BackPage,
     HeaderAppAdmin,
     ProfileStudent,
-    ProfileCompany
+    ProfileCompany,
+    ProfileStundetCard
 }

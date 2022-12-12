@@ -6,7 +6,8 @@ const backendEndpoints = {
     auth: "/auth",
     vacancies: "/vacancies",
     majors: "/majors",
-    profiles: "/profiles"
+    profiles: "/profiles",
+    userVacancy: "/usersVacancy"
 };
 const axiosBackend = axios.create({
     baseURL: import.meta.env.VITE_BACK_URL,

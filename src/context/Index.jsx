@@ -3,20 +3,23 @@ import AuthenticationContext, { AuthenticationProvider } from "./AuthenticationC
 import VacanciesContext, { VacanciesProvider } from "./VacanciesContext";
 import MajorsContext, { MajorsProvider } from "./MajorsContext";
 import ProfileContext, { ProfileProvider } from "./ProfileContext";
+import UserVacancyContext, {UserVacancyProfile} from "./UserVacancyContext";
 
 const context = {
     UserSelectionContext,
     AuthenticationContext,
     VacanciesContext,
     MajorsContext,
-    ProfileContext
+    ProfileContext,
+    UserVacancyContext
 }
 const provider = {
     UserSelectionProvider,
     AuthenticationProvider,
     VacanciesProvider,
     MajorsProvider,
-    ProfileProvider
+    ProfileProvider,
+    UserVacancyProfile
 }
 
 export {
