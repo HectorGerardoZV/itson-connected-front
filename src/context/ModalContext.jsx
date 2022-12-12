@@ -4,7 +4,8 @@ const ModalContext = createContext();
 const ModalProvider = ({ children }) => {
     const [modalValues, setModalValues] = useState({
         isOpenModal: false,
-        optionModal: ""
+        optionModal: "",
+        isOpenModalProfile:false
     });
 
     const handleOnChangeModal = (state, option) => {
@@ -14,11 +15,18 @@ const ModalProvider = ({ children }) => {
             optionModal: option
         });
     }
+    const handleOnChangeModalProfile = (state)=>{
+        setModalValues({
+            ...modalValues,
+            isOpenModalProfile:state
+        });
+    }
     return (
         <ModalContext.Provider
             value={{
                 ...modalValues,
-                handleOnChangeModal
+                handleOnChangeModal,
+                handleOnChangeModalProfile
             }}
         >
             {children}

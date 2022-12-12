@@ -1,4 +1,3 @@
-import ICON_COMPANY from "./ibm-img.png";
 //Components
 import { BackPage, ProfileStundetCard } from "../../../components";
 //Hooks
@@ -19,7 +18,7 @@ const CompanyVacancyPage = () => {
             />
             <section className={style.vacancyInfo}>
                 <div className={style.vacancyInfo__image}>
-                    <img src={profile.image} />
+                    <img src={profile?.image} />
                 </div>
                 <h3>{dateHelpers.formateDate(vacancy.created)}</h3>
                 <section className={style.vacancyInfo__section}>
@@ -73,7 +72,7 @@ const CompanyVacancyPage = () => {
                 <h2 className={style.titleSection}> <span>Usuarios</span> postulados</h2>
                 <div className={style.postulations}>
                     {
-                        postulations.profiles.map((profile, index) => (
+                        postulations?.profiles.map((profile, index) => (
                             <ProfileStundetCard
                                 key={index}
                                 profile={profile}

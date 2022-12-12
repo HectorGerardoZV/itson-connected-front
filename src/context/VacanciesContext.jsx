@@ -27,7 +27,8 @@ const VacanciesProvider = ({ children }) => {
             offer: "",
             requirements: "",
             limit: "",
-        }
+        },
+        userProfileSelected: null
     });
 
     const loadVacanciesPage = async () => {
@@ -56,7 +57,11 @@ const VacanciesProvider = ({ children }) => {
                 vacanciesManipulate: vacancies
             });
         } catch (error) {
-
+            setVacanciesValues({
+                ...vacanciesValues,
+                vacancies: [],
+                vacanciesManipulate: []
+            });
         }
     }
     const handleOnChangeVacancy = (e) => {
@@ -110,7 +115,12 @@ const VacanciesProvider = ({ children }) => {
 
         }
     }
-
+    const handleSelectUserProfile  = (profile)=>{
+        setVacanciesValues({
+            ...vacanciesValues,
+            userProfileSelected:profile
+        });
+    }
 
     const openToast = (message, location, type) => {
         toast.success(message, {
@@ -142,7 +152,8 @@ const VacanciesProvider = ({ children }) => {
                 handleOnChangeVacancy,
                 createAccount,
                 addUserAplication,
-                handleGetVacancyById
+                handleGetVacancyById,
+                handleSelectUserProfile
             }}
         >
             {children}

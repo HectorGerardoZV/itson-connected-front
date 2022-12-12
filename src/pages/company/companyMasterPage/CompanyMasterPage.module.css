@@ -1,4 +1,8 @@
 .masterPage {
+    position: relative;
+}
+
+.masterPageSection {
     max-width: 130rem;
     width: 90%;
     margin: 0 auto;

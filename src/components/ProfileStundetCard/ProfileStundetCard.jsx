@@ -1,11 +1,14 @@
 
-
+import {useModal, useVacancies} from "../../hooks";
 import style from "./ProfileStundetCard.module.css"
 const ProfileStundetCard = (props) => {
+    const {handleSelectUserProfile} = useVacancies();
+    const {handleOnChangeModalProfile} = useModal();
     const { profile } = props;
     const { image, idUniversity, name } = profile;
     const handleOnClick = () => {
-
+        handleSelectUserProfile(profile);
+        handleOnChangeModalProfile(true);
     }
 
     return (
